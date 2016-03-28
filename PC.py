@@ -8,7 +8,7 @@ while(True):
 	_,frame = cam.read()		#read the image
 	e1 = cv2.getTickCount()
 	#frame = modules.ROIfilteredCanny(frame,0,400,640,450)
-	frame = modules.findLine(frame,400,50)
+	print modules.readLine(frame,400)
 	e2 = cv2.getTickCount()
 	#print (e2-e1)/cv2.getTickFrequency()
 	cv2.imshow("frame",frame)

@@ -17,8 +17,7 @@ class FRDM(object):
         self.commands[4] =  str(leds)
         for i in self.commands:
             self.ser.write(i)
-        # while(True):
-        #     print self.ser.read()
+
 
 
 frdm = FRDM('/dev/ttyACM0')

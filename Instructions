@@ -1,0 +1,28 @@
+*Conect via ethernet cable direct to the laptop:
+	1- Configute your ethernet to share over IPv4 config
+	2- Power of your Pi without the ethernet cable
+	3- Wait for a while until you guess that the Pi you fully booted
+	4- Conect your ethernet cable in the Pi and in the laptop
+	5- In the laptop terminal run "cat /var/lib/misc/dnsmasq.leases" to get the 
+	IP address of your Pi in the shared network
+	6- Run "ssh pi@xx.xx.xx.xx" where "xx.xx.xx.xx" is the address the you get in step 4
+		Ex: ssh -X pi@10.42.0.65
+
+*Copy files via ssh:
+	1- Copy one single local file to a remote destination:
+		- run "scp /path/to/source-file user@host:/path/to/destination-folder/" 
+		in the host
+		- EXAMPLE: So, if you wan to copy the file /home/user/table.csv to a 
+		remote host named host.example.com and copy there to jane's home folder,
+		 use this command.
+			scp /home/user/table.csv jane@host.example.com:/home/jane/
+	2- Copy one single file from a remote server to your current local server:
+		- run "scp user@host:/path/to/source-file /path/to/destination-folder" in the host
+		- EXAMPLE: Let's say now you want to copy the same file from jane's home folder in 
+		host.example.com to your local home folder.
+			scp jane@host.example.com:/home/jane/table.csv /home/user/
+
+* Testing the camera
+	Before we dive into the code, let’s run a quick sanity check to ensure 
+	that our Raspberry Pi camera is working properly.
+		run "raspistill -o output.jpg"

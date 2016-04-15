@@ -22,11 +22,14 @@ def ROIfilteredCanny(img,x,y,w,h):
 	return roi
 
 def sobel(img, y):
-	img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) #convert to gray scale
 	roi = img[y-(1):y+(1), 0:]		#Cut a ROI of the image around the line
+	roi = cv2.cvtColor(roi,cv2.COLOR_BGR2GRAY) #convert to gray scale
 	roi = cv2.Sobel(roi,cv2.CV_64F,1,0,ksize = -1)
 	line = roi[1]
-	#print line
+	maxi = np.argmax(line)
+	mini = np.argmin(line)
+	center = (maxi+mini)/2
+	print center
 	#plt.plot(range(len(line)),line)
 	#plt.show()
 def readLineDebug(img,y,h = 5):

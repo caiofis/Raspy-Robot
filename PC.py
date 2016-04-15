@@ -10,7 +10,7 @@ while(True):
 	#frame = modules.ROIfilteredCanny(frame,0,400,640,450)
 	modules.sobel(frame,400)
 	e2 = cv2.getTickCount()
-	print (e2-e1)/cv2.getTickFrequency()
+	print (e2-e1)/cv2.getTickFrequency()*1000
 	cv2.imshow("frame",frame)
 	k = cv2.waitKey(1) & 0xFF
 	if k == 27:	#Tecla esc

@@ -16,12 +16,12 @@ class FRDM(object):
         self.commands[3] =  str((steer+10)).zfill(2)
         self.commands[4] =  str(leds)
 
-        self.ser.write(self.commands[0])
+        self.ser.write(self.commands[0])        #Write the starbit of the comm
         soma = 0
-        for i in range(1,5,1):
-            self.ser.write(self.commands[i])
-            soma += int(self.commands[i])
-        self.ser.write(str(soma).zfill(2))
+        for i in range(1,5,1):      
+            self.ser.write(self.commands[i])    #Write the data package
+            soma += int(self.commands[i])       #add to the pack to the checksum
+        self.ser.write(str(soma).zfill(2))      #Write the checksum
 
 # frdm = FRDM('/dev/ttyACM0')
 # #frdm.write(M1=0,M2=0,steer=0,leds=4)

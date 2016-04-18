@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def sobel(img, y):
 	roi = img[y-(1):y+(1), 0:]		#Cut a ROI of the image around the line
 	roi = cv2.cvtColor(roi,cv2.COLOR_BGR2GRAY) #convert to gray scale
@@ -22,3 +23,10 @@ def readLine(img,y):
 	return error
 	#plt.plot(range(len(line)),line)
 	#plt.show()
+
+def Pcontrol(error,Kp,error_max = 220):
+		if error > error_max:
+			error = error_max
+		if error < -error_max:
+			error = -error_max
+		return Kp*error

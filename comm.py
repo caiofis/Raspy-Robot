@@ -22,20 +22,20 @@ class FRDM(object):
             soma += int(self.commands[i])
         self.ser.write(str(soma).zfill(2))
 
-frdm = FRDM('/dev/ttyACM0')
-#frdm.write(M1=0,M2=0,steer=0,leds=4)
-while True:
-    for i in range(-5,5,1):
-        frdm.write(M1=0,M2=0,steer=i,leds=0)
-        frdm.write(M1=0,M2=0,steer=i,leds=0)
-        frdm.write(M1=0,M2=0,steer=i,leds=0)
-        frdm.write(M1=0,M2=0,steer=i,leds=0)
-        time.sleep(0.5)
-        print i
-    for i in range(5,-5,-1):
-        frdm.write(M1=0,M2=0,steer=i,leds=4)
-        frdm.write(M1=0,M2=0,steer=i,leds=4)
-        frdm.write(M1=0,M2=0,steer=i,leds=4)
-        frdm.write(M1=0,M2=0,steer=i,leds=4)
-        time.sleep(0.5)
-        print i
+# frdm = FRDM('/dev/ttyACM0')
+# #frdm.write(M1=0,M2=0,steer=0,leds=4)
+# while True:
+#     for i in range(-5,5,1):
+#         frdm.write(M1=0,M2=0,steer=i,leds=0)
+#         frdm.write(M1=0,M2=0,steer=i,leds=0)
+#         frdm.write(M1=0,M2=0,steer=i,leds=0)
+#         frdm.write(M1=0,M2=0,steer=i,leds=0)
+#         time.sleep(0.5)
+#         print i
+#     for i in range(5,-5,-1):
+#         frdm.write(M1=0,M2=0,steer=i,leds=4)
+#         frdm.write(M1=0,M2=0,steer=i,leds=4)
+#         frdm.write(M1=0,M2=0,steer=i,leds=4)
+#         frdm.write(M1=0,M2=0,steer=i,leds=4)
+#         time.sleep(0.5)
+#         print i

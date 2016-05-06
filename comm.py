@@ -8,23 +8,33 @@ class FRDM(object):
         self.sb = "S"
         self.eb = "E"
         self.commands = [self.sb,'0','0','0','4']
-        #self.ser.flush()
+        self.ser.flush()
 
+    def writeByte(self, value,delay=0):
+        self.ser.write(value)
+        time.sleep(delay)
     def write(self,M1,M2,steer,leds):
         self.commands[1] =  str((M1+10)).zfill(2)
         self.commands[2] =  str((M2+10)).zfill(2)
         self.commands[3] =  str((steer+10)).zfill(2)
         self.commands[4] =  str(leds)
+        steps = "EB";
+        while steps == "EB":
+            self.writeByte(self.commands[0],delay=0.03)
+            soma = 0
+            self.writeByte(self.commands[1])
+            self.writeByte(self.commands[2])
+            self.writeByte(self.commands[3])
+            self.writeByte(self.commands[4])
+            for i in range(1,5,1):
+                #self.writeByte(self.commands[i])
+                soma += int(self.commands[i])
+            self.writeByte(str(soma).zfill(2))
+            steps = int(self.ser.read(2))
 
-        self.ser.write(self.commands[0])
-        soma = 0
-        for i in range(1,5,1):
-            self.ser.write(self.commands[i])
-            soma += int(self.commands[i])
-        self.ser.write(str(soma).zfill(2))
+        return (steps)
 
-# frdm = FRDM('/dev/ttyACM0')
-# #frdm.write(M1=0,M2=0,steer=0,leds=4)
+
 # while True:
 #     for i in range(-5,5,1):
 #         frdm.write(M1=0,M2=0,steer=i,leds=0)

@@ -20,7 +20,7 @@ class FRDM(object):
         self.commands[4] =  str(leds)
         steps = "EB";
         while steps == "EB":
-            self.writeByte(self.commands[0],delay=0.03)
+            self.writeByte(self.commands[0],delay=0.0)
             soma = 0
             self.writeByte(self.commands[1])
             self.writeByte(self.commands[2])
@@ -47,6 +47,12 @@ class mouse(object):
 		self.writeByte("r")
 		steps = int(self.ser.read(6))
 		return steps-200000
+
+#print("Class created")
+#frdm = FRDM('/dev/ttyACM0')
+#print("FRDM Connected")
+#frdm.write(M1=0,M2=0,steer=0,leds=1)
+#print("Msg Writed")
 	
 #frdm = FRDM('/dev/ttyACM0')
 #while True:

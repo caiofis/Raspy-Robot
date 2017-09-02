@@ -6,7 +6,7 @@ import comm
 
 
 def main():
-    frdm = comm.FRDM('/dev/ttyUSB0')
+    frdm = comm.FRDM('/dev/ttyACM0')
     print "comunicando"
     frdm.write(M1=0,M2=0,steer=0,leds=0)
     print "comm ok"      
@@ -17,14 +17,22 @@ def main():
     joystick.init()
     #ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1);
     enc = 0
-    while True:
+    print("Wait for the first command") # X button is the start 
+    while not joystick.get_button(14):
         pygame.event.pump()
+
+    while joystick.get_button(14): # Release the button to finish
+        pygame.event.pump() #Joystick reads from -1 to 1 
         steer = int(round(joystick.get_axis(0)*9))
-        #speed = int(round(joystick.get_axis(13)*8))#-int(round(joystick.get_axis(12)*5))
-	speed = 0
-	print steer
+        speed = int(round((joystick.get_axis(13)+1)*0.5*8))
+        speed -= int(round((joystick.get_axis(12)+1)*0.5*5))
+        #speed = int(round((joystick.get_axis(13)+joystick.get_axis(12)+2)*0.5*$
+        #speed = 0
+        #print steer
+        #print speed
         enc = frdm.write(M1=speed,M2=speed,steer=steer,leds=0)
         #print enc
+
     enc = frdm.write(M1=0,M2=0,steer=0,leds=0)    
 
 if __name__ == "__main__":

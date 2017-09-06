@@ -30,10 +30,10 @@ def main():
         #speed = 0
         #print steer
         #print speed
-        enc = frdm.write(M1=speed,M2=speed,steer=steer,leds=0)
+        enc = frdm.write(M1=speed,M2=speed,steer=steer,leds=4)
         #print enc
 
-    enc = frdm.write(M1=0,M2=0,steer=0,leds=0)    
+    enc = frdm.write(M1=0,M2=0,steer=0,leds=0)
 
 if __name__ == "__main__":
     main()

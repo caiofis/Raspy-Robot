@@ -17,11 +17,11 @@ def main():
     joystick.init()
     #ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1);
     enc = 0
-    print("Wait for the first command") # X button is the start 
-    while not joystick.get_button(14):
+    print("Wait for the first command") # Triangle button is the start 
+    while not joystick.get_button(12):
         pygame.event.pump()
 
-    while joystick.get_button(14): # Release the button to finish
+    while joystick.get_button(12): # Release the button to finish
         pygame.event.pump() #Joystick reads from -1 to 1 
         steer = int(round(joystick.get_axis(0)*9))
         speed = int(round((joystick.get_axis(13)+1)*0.5*8))

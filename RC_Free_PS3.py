@@ -1,5 +1,4 @@
 import pygame,os
-from time import sleep
 import comm
 
 #control the freescale cup car using the serial module

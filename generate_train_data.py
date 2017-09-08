@@ -38,9 +38,9 @@ while joystick.get_button(12): # Release the button to finish
 	img=cv2.imread("/var/www/html/cam.jpg")
 	data.append(img)
 	#time.sleep(0.05)
-print "Would you like to save "+len(data)+" pictures?[y/n]"
+print "Would you like to save "+str(len(data))+" pictures?[y/n]"
 a= raw_input()
-if a == "y"
+if a == "y":
 	print "Saving"
 	data_array = np.array(data)
 	np.save('data',data_array)

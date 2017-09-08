@@ -22,7 +22,8 @@ print("Wait for the first command") # Triangle button is the start
 while not joystick.get_button(12):
 	pygame.event.pump()
 
-data = []
+data_x = []
+data_y = []
 print "Colecting data"
 while joystick.get_button(12): # Release the button to finish
 	pygame.event.pump() #Joystick reads from -1 to 1 
@@ -36,13 +37,15 @@ while joystick.get_button(12): # Release the button to finish
 	enc = frdm.write(M1=speed,M2=speed,steer=steer,leds=4)
 	#print enc
 	img=cv2.imread("/var/www/html/cam.jpg")
-	data.append(img)
+	data_x.append(img)
+	data_y.append(steer)
 	#time.sleep(0.05)
+enc = frdm.write(M1=0,M2=0,steer=0,leds=0)
 print "Would you like to save "+str(len(data))+" pictures?[y/n]"
 a= raw_input()
 if a == "y":
 	print "Saving"
-	data_array = np.array(data)
+	data_array = np.array([data_x,data_y])
 	np.save('data',data_array)
 else:
 	print "Don't saved"

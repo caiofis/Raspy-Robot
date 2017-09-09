@@ -41,7 +41,7 @@ while joystick.get_button(12): # Release the button to finish
 	data_y.append(steer)
 	#time.sleep(0.05)
 enc = frdm.write(M1=0,M2=0,steer=0,leds=0)
-print "Would you like to save "+str(len(data))+" pictures?[y/n]"
+print "Would you like to save "+str(len(data_x))+" pictures?[y/n]"
 a= raw_input()
 if a == "y":
 	print "Saving"

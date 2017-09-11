@@ -28,11 +28,23 @@ def show_Chart():
 	     plt.imshow(data[0][j])
 	plt.show()
 
-print "How would you like to visualize?"
-print "1 - A video animation"
-print "2 - A brief chart"
-a = raw_input()
-if a == "1":
-	show_Video()
-if a == "2":
-	show_Chart()
+def show_Histogram():
+	fig = plt.figure()
+	plt.hist(data[1])
+	plt.show()
+
+while True:
+	print "How would you like to visualize?"
+	print "1 - A video animation"
+	print "2 - A brief chart"
+	print "3 - A histogram of the labels"
+	print "4 - Exit"
+	a = raw_input()
+	if a == "1":
+		show_Video()
+	if a == "2":
+		show_Chart()
+	if a == "3":
+		show_Histogram()
+	if a == "4":
+		break

@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-data = np.load('data.npy',encoding='bytes')
-
+#data = np.load('data.npy',encoding='bytes')
+data = np.load('compressed_data.npy',encoding='bytes')
 def show_Video():
 	fig = plt.figure()
 	# make axesimage object

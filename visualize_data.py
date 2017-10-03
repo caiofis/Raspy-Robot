@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 #data = np.load('data.npy',encoding='bytes')
-data = np.load('compressed_data.npy',encoding='bytes')
+data = np.load('data_left.npy',encoding='bytes')
 def show_Video():
 	fig = plt.figure()
 	# make axesimage object
-	im = plt.imshow(data[0][0])
+	im = plt.imshow(data[0][0],cmap='gray')
 	# function to update figure
 	def updatefig(j):
 	    # set the data in the axesimage object
@@ -25,7 +25,7 @@ def show_Chart():
 	     j=np.random.randint(0,len(data[0]))
 	     ax = fig.add_subplot(2,3,i+1)
 	     ax.title.set_text(str(data[1][j]))
-	     plt.imshow(data[0][j])
+	     plt.imshow(data[0][j],cmap='gray')
 	plt.show()
 
 def show_Histogram():

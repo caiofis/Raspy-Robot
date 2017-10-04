@@ -8,8 +8,16 @@ class dataHandler(object):
     def __init__(self, file):
         self.data = np.load(file,encoding='bytes')
 
-    def save(self, file = 'training_data.npy')
+    def save(self, file = 'training_data.npy'):
+    """Save data as numpy file"""
         np.save(file, final_data)
+
+    def merge(self, file = "training_data.npy"):
+    """ Merge a datafile to the data set.
+          Use before reshape   """
+        new_data = np.load(file,encoding='bytes')
+        self.data = np.concatenate((self.data,new_data),axis=1)
+
 
     def balance(self):
         """This code reduct the bias in the data set"""

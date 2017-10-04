@@ -3,20 +3,30 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 #data = np.load('data.npy',encoding='bytes')
-data = np.load('data_left.npy',encoding='bytes')
+data = np.load('data/03_10_17/data.npy',encoding='bytes')
 def show_Video():
 	fig = plt.figure()
 	# make axesimage object
 	im = plt.imshow(data[0][0],cmap='gray')
+	fig1 = plt.figure()
+	line, = plt.plot([], [], 'r-')
+	plt.ylim(-10, 10)
+	plt.xlim(0, len(data[1]))
 	# function to update figure
 	def updatefig(j):
 	    # set the data in the axesimage object
 	    im.set_array(data[0][j])
 	    # return the artists set
 	    return [im]
+	def update_line(num, data, line):
+    	      line.set_data(range(num),data[1][:num])
+    	      plt.xlim(num-100, num)
+    	      return line,
 	# kick off the animation
-	ani = animation.FuncAnimation(fig, updatefig, frames=range(len(data[0])), 
+	ani = animation.FuncAnimation(fig, updatefig, frames=range(len(data[0])),
                               interval=30, blit=True)
+	line_ani = animation.FuncAnimation(fig1, update_line, fargs=(data, line),
+                                   interval=30, blit=True)
 	plt.show()
 
 def show_Chart():

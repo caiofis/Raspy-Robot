@@ -37,7 +37,7 @@ while joystick.get_button(12): # Release the button to finish
 	enc = frdm.write(M1=speed,M2=speed,steer=steer,leds=4)
 	#print enc
 	img=cv2.imread("/var/www/html/cam.jpg")
-	img = cv2.cvtColor(compressed, cv2.COLOR_BGR2GRAY)
+	img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	img = cv2.resize(im,(50,50))
 	data_x.append(img)
 	data_y.append(steer)

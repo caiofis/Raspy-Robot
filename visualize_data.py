@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 #data = np.load('data.npy',encoding='bytes')
-data = np.load('data/03_10_17/data.npy',encoding='bytes')
+data = np.load('data/small_data.npy',encoding='bytes')
 def show_Video():
 	fig = plt.figure()
 	# make axesimage object
@@ -25,7 +25,7 @@ def show_Video():
 	# kick off the animation
 	ani = animation.FuncAnimation(fig, updatefig, frames=range(len(data[0])),
                               interval=30, blit=True)
-	line_ani = animation.FuncAnimation(fig1, update_line, fargs=(data, line),
+	line_ani = animation.FuncAnimation(fig1, update_line, frames=range(len(data[0])),fargs=(data, line),
                                    interval=30, blit=True)
 	plt.show()
 
@@ -40,7 +40,7 @@ def show_Chart():
 
 def show_Histogram():
 	fig = plt.figure()
-	plt.hist(data[1])
+	plt.hist(data[1],bins=19)
 	plt.show()
 
 while True:

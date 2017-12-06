@@ -42,6 +42,7 @@ class dataHandler(object):
         self.data = final_data
 
     def reductZeros(self):
+        """ take of some examples lableled as zero"""
         max_zeros = (1.0/19) * len(self.data[0])
         print max_zeros
         imgs = []
@@ -57,7 +58,22 @@ class dataHandler(object):
                 j += 1
         self.data = [imgs,labels]
 
+    def singleLine(self,height=10):
+        imgs = []
+        labels=[]
+        for i in xrange(len(self.data[0])):
+            imgs.append(self.data[0][i][height,:])
+            labels.append(self.data[1][i])
+        self.data = [imgs,labels]
 
+    def twoLines(self,height1=3,height2=20):
+        imgs = []
+        labels=[]
+        for i in xrange(len(self.data[0])):
+            img = np.concatenate((self.data[0][i][height1,:], self.data[0][i][height2,:]), axis=0)
+            imgs.append(img)
+            labels.append(self.data[1][i])
+        self.data = [imgs,labels]
 
     def reshape(self):
        samples = []

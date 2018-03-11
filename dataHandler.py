@@ -75,6 +75,14 @@ class dataHandler(object):
             labels.append(self.data[1][i])
         self.data = [imgs,labels]
 
+    def ROI(self,height1=0,height2=20):
+        imgs = []
+        labels=[]
+        for i in xrange(len(self.data[0])):
+            imgs.append(self.data[0][i][height1:height2,:])
+            labels.append(self.data[1][i])
+        self.data = [imgs,labels]
+
     def reshape(self):
        samples = []
        for i in xrange(len(self.data[0])):
